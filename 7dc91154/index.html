@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://yoursite.com/7dc91154/index.html">
 <meta property="og:site_name" content="lllulu">
 <meta property="og:description" content="卡住的地方：  int转换成char 进制之间的转换原理">
-<meta property="og:updated_time" content="2017-08-31T14:09:55.000Z">
+<meta property="og:updated_time" content="2017-09-11T03:25:39.606Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="进制转换">
 <meta name="twitter:description" content="卡住的地方：  int转换成char 进制之间的转换原理">
@@ -355,9 +355,10 @@
         <p>卡住的地方：</p>
 <ol>
 <li>int转换成char</li>
-<li>进制之间的转换原理<a id="more"></a>
-<strong>题目</strong>：<br>我们可以用这样的方式来表示一个十进制数: 将每个阿拉伯数字乘以一个以该数字所处位置的(值减1)为指数,以10为底数的幂之和的形式。例如:123可表示为1×10^2+2×10^1+3×10^0​这样的形式。<br>与之相似的,对二进制数来说,也可表示成每个二进制数码乘以一个以该数字所处位置的(值-1)为指数,以2为底数的幂之和的形式。一般说来,任何一个正整数R或一个负整数-R都可以被选来作为一个数制系统的基数。如果是以R或-R为基数,则需要用到的数码为 0,1,….R-1。例如,当R=7时,所需用到的数码是0,1,2,3,4,5和6,这与其是R或-R无关。如果作为基数的数绝对值超过10,则为了表示这些数码,通常使用英文字母来表示那些大于9的数码。例如对16进制数来说,用A表示10,用B表示11,用C表示12,用D表示13,用E表示14,用F表示15。</li>
+<li>进制之间的转换原理</li>
 </ol>
+<a id="more"></a>
+<p><strong>题目</strong>：<br>我们可以用这样的方式来表示一个十进制数: 将每个阿拉伯数字乘以一个以该数字所处位置的(值减1)为指数,以10为底数的幂之和的形式。例如:123可表示为1×10^2+2×10^1+3×10^0​这样的形式。<br>与之相似的,对二进制数来说,也可表示成每个二进制数码乘以一个以该数字所处位置的(值-1)为指数,以2为底数的幂之和的形式。一般说来,任何一个正整数R或一个负整数-R都可以被选来作为一个数制系统的基数。如果是以R或-R为基数,则需要用到的数码为 0,1,….R-1。例如,当R=7时,所需用到的数码是0,1,2,3,4,5和6,这与其是R或-R无关。如果作为基数的数绝对值超过10,则为了表示这些数码,通常使用英文字母来表示那些大于9的数码。例如对16进制数来说,用A表示10,用B表示11,用C表示12,用D表示13,用E表示14,用F表示15。</p>
 <p>在负进制数中是用-R 作为基数,例如-15(十进制)相当于110001(-2进制),并且它可以被表示为2的幂级数的和数:</p>
 <p>110001=1×(-2)^5+1×(-2)^4+0×(-2)^3+0×(-2)^2+0×(-2)^1 +1×(-2)^0</p>
 <p>设计一个程序,读入一个十进制数和一个负进制数的基数, 并将此十进制数转换为此负进制下的数:-R∈{-2,-3,-4,…,-20}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">#include &lt;iostream&gt;</div><div class="line">using namespace std;</div><div class="line"></div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">	freopen(&quot;1.txt&quot;,&quot;r&quot;,stdin);</div><div class="line">	int N;	//被除数</div><div class="line">	int R;</div><div class="line">	int x;	//余数</div><div class="line">	int i=0;</div><div class="line">	int n;</div><div class="line">	cin&gt;&gt;N&gt;&gt;R;</div><div class="line">	char r[1000000];	</div><div class="line">	int d;	</div><div class="line">	d=N;</div><div class="line">	while(N!=0)</div><div class="line">	&#123;</div><div class="line">		x=N%R;	</div><div class="line">		N=N/R;</div><div class="line">		if(x&lt;0)</div><div class="line">		&#123;</div><div class="line">			x=x-R;</div><div class="line">			N=N+1;</div><div class="line">		&#125;</div><div class="line">		if(x&gt;=10)</div><div class="line">		&#123;</div><div class="line">			r[i]=x-10+&apos;A&apos;;	//int型数据转换成字母</div><div class="line">		&#125;</div><div class="line">		else</div><div class="line">			r[i]=x+&apos;0&apos;;	//int型数据转换成char型</div><div class="line">		i++;</div><div class="line">	&#125;</div><div class="line">	n=i;</div><div class="line">	cout&lt;&lt;d&lt;&lt;&apos;=&apos;;</div><div class="line">	for(i=n-1;i&gt;-1;i--)</div><div class="line">		cout&lt;&lt;r[i];</div><div class="line">	printf(&quot;(base%d)\n&quot;,R);</div><div class="line">	return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
