@@ -1,0 +1,721 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.google.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JAVA," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="新学期开始了，这个学期要学习java，助教学长严格的给我们布置了很多作业。于是每个星期都在疯狂的写java作业中度过，想了想还是觉得应该把遇到的问题记录下来|•ω•`)虽然助教表示，以后每年作业都会修改，但是学的东西是一样的，说不定还能造福学弟学妹。如果他们能找到我的博客的话ヽ(￣ω￣(￣ω￣〃)ゝ">
+<meta name="keywords" content="JAVA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA学习笔记（一）---关于jar包运行时找不到主类">
+<meta property="og:url" content="http://yoursite.com/f9ec35a0/index.html">
+<meta property="og:site_name" content="lllulu">
+<meta property="og:description" content="新学期开始了，这个学期要学习java，助教学长严格的给我们布置了很多作业。于是每个星期都在疯狂的写java作业中度过，想了想还是觉得应该把遇到的问题记录下来|•ω•`)虽然助教表示，以后每年作业都会修改，但是学的东西是一样的，说不定还能造福学弟学妹。如果他们能找到我的博客的话ヽ(￣ω￣(￣ω￣〃)ゝ">
+<meta property="og:updated_time" content="2018-04-03T03:13:11.618Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JAVA学习笔记（一）---关于jar包运行时找不到主类">
+<meta name="twitter:description" content="新学期开始了，这个学期要学习java，助教学长严格的给我们布置了很多作业。于是每个星期都在疯狂的写java作业中度过，想了想还是觉得应该把遇到的问题记录下来|•ω•`)虽然助教表示，以后每年作业都会修改，但是学的东西是一样的，说不定还能造福学弟学妹。如果他们能找到我的博客的话ヽ(￣ω￣(￣ω￣〃)ゝ">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/f9ec35a0/"/>
+
+
+
+
+
+  <title>JAVA学习笔记（一）---关于jar包运行时找不到主类 | lllulu</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">lllulu</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-todo">
+          <a href="/f2e76b36/index.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            todo
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/f9ec35a0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lllulu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lllulu">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JAVA学习笔记（一）---关于jar包运行时找不到主类</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-03T11:13:11+08:00">
+                2018-04-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>新学期开始了，这个学期要学习java，助教学长严格的给我们布置了很多作业。<br>于是每个星期都在疯狂的写java作业中度过，想了想还是觉得应该把遇到的问题记录下来|•ω•`)<br>虽然助教表示，以后每年作业都会修改，但是学的东西是一样的，说不定还能造福学弟学妹。<br>如果他们能找到我的博客的话ヽ(￣ω￣(￣ω￣〃)ゝ<br><a id="more"></a></p>
+<h3 id="打成可运行的jar包"><a href="#打成可运行的jar包" class="headerlink" title="打成可运行的jar包"></a>打成可运行的jar包</h3><p>第二次作业有一道题让我们学习jar包，当时在网上找了很多资料，打成jar包以后却怎么也运行不了。尝试了文章里经常出现的修改MANIFEST.MF文件，也就是在该文件里添加Main-Class语句，但依旧提示找不到主类。</p>
+<h3 id="重新找资料"><a href="#重新找资料" class="headerlink" title="重新找资料"></a>重新找资料</h3><p>继续搜索文档，在一篇博客里找到了直接用命令打包并指定程序入口，也就是定义Main-Class。<br><code>jar cvfe 文件名.jar 入口 所需打成jar包的文件</code><br>再运行<br><code>java -jar 文件名.jar</code><br>成功运行。</p>
+<h3 id="再次遇到问题"><a href="#再次遇到问题" class="headerlink" title="再次遇到问题"></a>再次遇到问题</h3><p>又一次的课后作业要求打成jar包，这一次的java文件里，包含主类的java文件有一个包，而主类文件调用的另一文件在另一个包内。<br>两个文件的代码<br><strong>SunRise.java</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">package nihao;</div><div class="line">import tom.jiafei.Trangle;</div><div class="line">import java.util.Date;</div><div class="line">class SunRise</div><div class="line">&#123;</div><div class="line">    public static void main(String args[])</div><div class="line">    &#123;</div><div class="line">	    Trangle trangle=new Trangle(12,3,104);</div><div class="line">		trangle.计算面积();</div><div class="line">		trangle.修改三边(3,4,5);</div><div class="line">		trangle.计算面积();</div><div class="line">		Date date=new Date();</div><div class="line">		System.out.println(date);</div><div class="line">    &#125;	</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>第二个文件<br><strong>Tragle.java</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">package tom.jiafei;</div><div class="line">public class Trangle</div><div class="line">&#123;</div><div class="line">    double sideA,sideB,sideC;</div><div class="line">	boolean boo;</div><div class="line">	public Trangle(double a,double b,double c)</div><div class="line">	&#123;</div><div class="line">	    sideA=a;sideB=b;sideC=c;</div><div class="line">		if(a&gt;0&amp;&amp;b&gt;0&amp;&amp;c&gt;0&amp;&amp;a+b&gt;c&amp;&amp;a+c&gt;b&amp;&amp;b+c&gt;a)</div><div class="line">		&#123;</div><div class="line">		    System.out.println(&quot;我是一个三角形&quot;);</div><div class="line">			boo=true;</div><div class="line">		&#125;</div><div class="line">		else</div><div class="line">		&#123;</div><div class="line">		    System.out.println(&quot;我不是一个三角形&quot;);</div><div class="line">			boo=false;</div><div class="line">		&#125;	</div><div class="line">	&#125;</div><div class="line">	public void 计算面积()</div><div class="line">	&#123;</div><div class="line">	    if(boo)</div><div class="line">		&#123;</div><div class="line">		    double p=(sideA+sideB+sideC)/2.0;</div><div class="line">			double area=Math.sqrt(p*(p-sideA)*(p-sideB)*(p-sideC));</div><div class="line">			System.out.println(&quot;是一个三角形，能计算面积&quot;);</div><div class="line">			System.out.println(&quot;面积是：&quot;+area);</div><div class="line">		&#125;</div><div class="line">		else</div><div class="line">		&#123;</div><div class="line">		    System.out.println(&quot;不是一个三角形，不 能计算面积&quot;); </div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	public void 修改三边(double a,double b,double c)</div><div class="line">	&#123;</div><div class="line">	    sideA=a;sideB=b;sideC=c;</div><div class="line">            if(a&gt;0&amp;&amp;b&gt;0&amp;&amp;c&gt;0&amp;&amp;a+b&gt;c&amp;&amp;a+c&gt;b&amp;&amp;b+c&gt;a)</div><div class="line">		&#123;</div><div class="line">		    System.out.println(&quot;我是一个三角形&quot;);</div><div class="line">			boo=true;</div><div class="line">		&#125;</div><div class="line">		else</div><div class="line">		&#123;</div><div class="line">		    System.out.println(&quot;我不是一个三角形&quot;);</div><div class="line">			boo=false;</div><div class="line">		&#125;			</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>先编译<br><code>javac Trangle.java SunRise.java</code><br>由于文件里有中文，可能会出现编码错误，所以使用下面的命令编译<br><code>javac -encoding gbk Trangle.java SunRise.java</code><br>编译完毕之后，将<code>SunRise.class</code>放到新建的命名为<code>nihao</code>的文件夹中，将<code>Trangle.class</code>放到新建的命名为<code>tom</code>的文件夹里命名为<code>jiafei</code>的文件夹里。<br>然后在<code>nihao</code>和<code>tom</code>所在的文件夹里执行命令<br><code>java nihao.SunRise</code><br>就能成功运行（顺便把含包文件的编译运行方式给说了|•ω•`)）</p>
+<p><strong>错误的打包方式</strong><br>由于脑子被僵尸啃掉了，犯蠢了的我，把<code>nihao</code>和<code>tom</code>放到了命名为<code>SunRise</code>的文件夹里，打包<br><code>jar SunRise.jar nihao.SunRise SunRise</code><br>但是之后运行却依旧显示找不到主类。各种修改入口，可还是找不到主类。</p>
+<h3 id="解决问题（思考，思考，思考一下）"><a href="#解决问题（思考，思考，思考一下）" class="headerlink" title="解决问题（思考，思考，思考一下）"></a>解决问题（思考，思考，思考一下）</h3><p>静下心来仔细的思考了一下，以我最开始给出的打包命令为例<br><code>jar cvfe 文件名.jar 入口 所需打成jar包的文件</code><br>我以为<code>所需打成jar包的文件</code>只能是一个文件，或者一个包含所有需要打包的文件的文件夹。<br>但事实上并非如此，他可以打包多个文件。<br>而由于我新建了一个<code>SunRise</code>的文件夹，导致<code>SunRise.class</code>的路径出现了错误，所以也就找不到主类了<br><strong>正确的打包方式</strong><br><code>jar SunRise.jar nihao.SunRise nihao tom</code><br><code>java -jar SunRise.jar</code><br>成功运行。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>带着脑子编程是很重要的，要多种豌豆射手保护好自己的脑子|•ω•`)</p>
+
+      
+    </div>
+    <div>
+      
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-github"></i>感谢您的阅读-------------</div>
+      
+    </div>
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/b83663b1/" rel="next" title="lllulu的第一个爬虫">
+                <i class="fa fa-chevron-left"></i> lllulu的第一个爬虫
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div id="sidebar-dimmer"></div>
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="lllulu" />
+          <p class="site-author-name" itemprop="name">lllulu</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://ot0nvlvek.bkt.clouddn.com/17-7-25/94120570.jpg" target="_blank" title="WeChat Official Accounts">
+                  
+                    <i class="fa fa-fw fa-weixin"></i>
+                  
+                  WeChat Official Accounts
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#打成可运行的jar包"><span class="nav-number">1.</span> <span class="nav-text">打成可运行的jar包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重新找资料"><span class="nav-number">2.</span> <span class="nav-text">重新找资料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#再次遇到问题"><span class="nav-number">3.</span> <span class="nav-text">再次遇到问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决问题（思考，思考，思考一下）"><span class="nav-number">4.</span> <span class="nav-text">解决问题（思考，思考，思考一下）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lllulu</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <script type="text/javascript" src="/live2d/script.js"></script>
+    <canvas id="live2dcanvas" width="200" height="400" class="live2d"></canvas>
+    <style>
+      #live2dcanvas {
+        position: fixed;
+        right: 60px;
+        z-index: 9999;
+        pointer-events: none;
+        bottom: -60px;
+      }
+    </style>
+    <script>loadlive2d("live2dcanvas" ,"/live2d/assets/koharu/koharu.model.json")</script>
+  
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>
