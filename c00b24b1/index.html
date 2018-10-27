@@ -1,0 +1,744 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="牛客网上某些习题笔记，初学，选的题目超简单。。。。  print(&amp;#39;a&amp;#39;&amp;lt;&amp;#39;b&amp;#39;&amp;lt;&amp;#39;c&amp;#39;)运行结果是True解析：python支持连续比较，其本质是字符ASCII码的大小比较 字符应该视为长度为1的字符串 既可以用单引号，也可以用双引号创建字符串 在三引号字符串中可以包含换行回车等特殊字符 python中字符串不需要以\0结尾，c/c++">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python笔记">
+<meta property="og:url" content="http://yoursite.com/c00b24b1/index.html">
+<meta property="og:site_name" content="lllulu">
+<meta property="og:description" content="牛客网上某些习题笔记，初学，选的题目超简单。。。。  print(&amp;#39;a&amp;#39;&amp;lt;&amp;#39;b&amp;#39;&amp;lt;&amp;#39;c&amp;#39;)运行结果是True解析：python支持连续比较，其本质是字符ASCII码的大小比较 字符应该视为长度为1的字符串 既可以用单引号，也可以用双引号创建字符串 在三引号字符串中可以包含换行回车等特殊字符 python中字符串不需要以\0结尾，c/c++">
+<meta property="og:updated_time" content="2018-10-27T15:55:34.739Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python笔记">
+<meta name="twitter:description" content="牛客网上某些习题笔记，初学，选的题目超简单。。。。  print(&amp;#39;a&amp;#39;&amp;lt;&amp;#39;b&amp;#39;&amp;lt;&amp;#39;c&amp;#39;)运行结果是True解析：python支持连续比较，其本质是字符ASCII码的大小比较 字符应该视为长度为1的字符串 既可以用单引号，也可以用双引号创建字符串 在三引号字符串中可以包含换行回车等特殊字符 python中字符串不需要以\0结尾，c/c++">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/c00b24b1/"/>
+
+
+
+
+
+  <title>python笔记 | lllulu</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">lllulu</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-todo">
+          <a href="/f2e76b36/index.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            todo
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/c00b24b1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lllulu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lllulu">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">python笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-29T21:21:00+08:00">
+                2018-08-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>牛客网上某些习题笔记，初学，选的题目超简单。。。。</p>
+<ol>
+<li><code>print(&#39;a&#39;&lt;&#39;b&#39;&lt;&#39;c&#39;)</code>运行结果是<code>True</code><br>解析：python支持连续比较，其本质是字符ASCII码的大小比较</li>
+<li>字符应该视为长度为1的字符串</li>
+<li>既可以用单引号，也可以用双引号创建字符串</li>
+<li>在三引号字符串中可以包含换行回车等特殊字符</li>
+<li>python中字符串不需要以\0结尾，c/c++中字符串以\0结尾</li>
+<li>python2中，普通字符串是以8为ASCII码进行存储的，而Unicode字符串则存储为16位unicode字符串，这样能够更好的表示更多的字符集，使用的语法是在字符串前面加上前缀u<br>在python3中，所有的字符串都是unicode字符串</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import copy</div><div class="line">a = [1,2,3,4,[&apos;a&apos;,&apos;b&apos;]]</div><div class="line">b = a   # 引用，除非直接给a重新赋值，否则a变则b变，b变则a变</div><div class="line">c = copy.copy(a)    # 浅复制，只会拷贝父对象，不会拷贝父对象中子对象，所以若a的子对象变则c变，但是父对象变c不会变</div><div class="line">d = copy.deepcopy(a)    # 深拷贝，完全拷贝，完全独立于原对象，a变也不变</div><div class="line">a.append(5)</div><div class="line">a[4].append(&apos;c&apos;)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a == [1,2,3,4,[&apos;a&apos;,&apos;b&apos;,&apos;c&apos;],5]</div><div class="line">b == [1,2,3,4,[&apos;a&apos;,&apos;b&apos;,&apos;c&apos;],5]</div><div class="line">c == [1,2,3,4,[&apos;a&apos;,&apos;b&apos;&apos;c&apos;]]</div><div class="line">d == [1,2,3,4,[&apos;a&apos;,&apos;b&apos;]]</div></pre></td></tr></table></figure></p>
+<ol>
+<li>python2支持数字和字符串之间的比较，而python3不支持<br>tuple的比较是从两者的第一个元素的ASCII码开始，直至两个元素不相等为止，若前面元素都相等，则元素个数多的tuple较大<blockquote>
+<p>(1,9)&lt;(2,3)    # True<br>(8,9)&lt;(1,2,3)  # False<br>(1,2,3)==(1,2,3)   # True<br>(3,2)&lt;(‘a’,’b’)    # python2:True python3:False</p>
+</blockquote>
+</li>
+<li>python中浮点数的运算存在误差，例：1.2-1.0=0.1999999999999996</li>
+<li><em>name</em>这个系统变量显示了当前模块执行过程中的名称，如果当前程序运行在这个模块中，则为这个模块的名称<br><em>main</em>一般作为函数的入口，类似与C语言，尤其在大型工程中，常常有if<em>name</em>==”<em>main</em>“来表明整个工程开始运行的入口<br>参考链接：<a href="https://blog.csdn.net/iamoldpan/article/details/78077983" target="_blank" rel="external">https://blog.csdn.net/iamoldpan/article/details/78077983</a></li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = map(lambda x:x**3,[1,2,3])</div><div class="line">list(a)</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>结果:<br><code>[1,8,27]</code><br>map()接收两个参数，一个是功能函数f，一个list，并将f依次作用在list的每个元素上，并返回一个新的list，a**b表示a的b次方</p>
+<ol>
+<li>线程由操作系统控制，协程由程序自身控制<br>参考链接：<a href="https://www.cnblogs.com/lxmhhy/p/6041001.html" target="_blank" rel="external">https://www.cnblogs.com/lxmhhy/p/6041001.html</a></li>
+<li>当tuple(元组)只含一个元素时，需要在元素后加上逗号。因为()优先级高，被认为是执行算术运算<blockquote>
+<p>(1):不是元组的定义方式<br>(1,)：元组的定义方式</p>
+</blockquote>
+</li>
+<li><code>[i**i for i in xrange(3)]</code><br>结果：<br><code>[1,1,4]</code><br>xrange()函数用法与range完全相同，所不同的是xrange返回一个生成器，而range返回list</li>
+<li><blockquote>
+<p><em>new</em>是在实例创建之前被调用的，因为它的任务就是创建实例然后返回该实例，是个静态方法<br><em>init</em>是当实例对象创建完成后被调用的，然后设置对象属性的一些初始值<br>即<em>new</em>在<em>init</em>之前被调用，<em>new</em>的返回值（实例）将传递给<em>init</em>方法的第一个参数，然后<em>init</em>给这个实例设置一些参数<br><em>new</em>是一个静态方法，而<em>init</em>是一个实例方法<br><em>new</em>方法会返回一个创建的实例，而<em>init</em>什么都不返回<br>只有在<em>new</em>返回一个cls实例时，后面的<em>init</em>才能被调用<br>当创建一个新实例时调用<em>new</em>，初始化一个实例时用<em>init</em></p>
+</blockquote>
+</li>
+<li>python中四种命名方式</li>
+<li>object #公用方法</li>
+<li><code>_object</code> #半保护<blockquote>
+<p>被看作是”protect”，意思是只有类对象和子类对象自己能访问到这些变量，在模块或类外不可以使用，不能用’from moudle import *’导入<br>_object是为了避免与子类的方法名称冲突，对于该标识符描述的方法，父类的方法不能轻易地被子类的方法覆盖，他们的名字实际上是_classname_methodname</p>
+</blockquote>
+</li>
+<li><code>__object</code> #全私有，全保护<blockquote>
+<p>私有成员”private”，意思是只有类对象自己能访问，连子类对象也不能访问到这个数据，不能用’form module import *’导入</p>
+</blockquote>
+</li>
+<li><code>__object__</code> #内建方法，用户不要这样定义,代表特殊方法专用的标识</li>
+<li><strong>切片</strong>(元组与列表相同)</li>
+<li>切片的使用形式是元组元素后跟<code>[a:b]</code>或<code>[a:b:s]</code>，其返回值是一个新元组</li>
+<li>元组切片元素的<code>a</code>与<code>b</code>代表了<strong>元素索引</strong>，<code>s</code>代表了<strong>步长值</strong></li>
+<li>元组切片，会返回<code>索引a</code>到<code>索引b</code>之间的内容（包括索引a对应的内容而不包括索引b对应的内容）组成的新元组，其中新元组的每两个相邻元素的索引差值是步长值</li>
+<li>未提供<code>索引a</code>则默认为0,为提供<code>索引b</code>则默认为元组长度（即最后一个元素索引+1），未提供步长值s则默认为1</li>
+<li>省略元素时应注意至少有一个<code>：</code>存在才会被认为是切片;且只有一个<code>：</code>时会认为是<code>a：b</code>形式</li>
+<li>步长值为<strong>负数</strong>时意味着新元组产生方向为从右到左</li>
+<li>元组索引为负数代表元组从后数，<code>-x</code>的意思是从后数<code>x</code>个元素，例如<code>-1</code>代表了元组的最后一个元素<blockquote>
+<p>a=(1,2,3,4,5,6,7,8,9)<br>x=a[4:]# x=(5,6,7,8,9)<br>x=a[:3]# x=(1,2,3)<br>x=a[:]# x=(1,2,3,4,5,6,7,8,9)<br>x=a[2:7]# x=(3,4,5,6,7)<br>x=a[2:7:2]# x=(3,5,7)<br>x=a[-5:]# x=(5,6,7,8,9)<br>x=a[:-3]# x=(1,2,3,4,5,6)<br>x=a[::-1]# x=(9,8,7,6,5,4,3,2,1)<br>x=a[5:1]# x=() 默认的元组产生方式为从左到右，元组索引a在b之后会返回空元组<br>x=a[5:1:-1]# x=(6,5,4,3)<br>x=a[-1:-5]# x=() 新元组的产生方式只与步长值的正负有关而与索引的查询方式无关<br>参考链接：<a href="https://blog.singee.me/2017/07/30/python-note-tuple/" target="_blank" rel="external">https://blog.singee.me/2017/07/30/python-note-tuple/</a></p>
+</blockquote>
+</li>
+<li><strong>类的继承和多态</strong><br>Python有两个判断继承的函数：isinstance()用于检查<strong>实例类型</strong>;issubclass()用于检查<strong>类继承</strong><br>参考链接：<a href="https://www.cnblogs.com/feeland/p/4419121.html" target="_blank" rel="external">https://www.cnblogs.com/feeland/p/4419121.html</a></li>
+<li><strong>可变类型和不可变类型</strong><br>可变类型：<code>list，dict</code><br>不可变类型：<code>int，string，float，tuple</code><br><code>is</code> 指地址相同<br><code>==</code> 指内容相同<br>参考链接：<a href="https://www.jianshu.com/p/c5582e23b26c" target="_blank" rel="external">https://www.jianshu.com/p/c5582e23b26c</a></li>
+<li><strong>set</strong><br>要创建一个set，需要提供一个list作为输入集合<br><code>s=set([1,2,3])</code><br>重复元素在set中自动被过滤<br>参考链接：<a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143167793538255adf33371774853a0ef943280573f4d000" target="_blank" rel="external">https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143167793538255adf33371774853a0ef943280573f4d000</a></li>
+<li><code>python my.py v1 v2</code>命令运行脚本，通过<code>from sys import argv</code>如何获得<code>v2</code>的参数值<blockquote>
+<p>sys.argv是传递给python脚本的命令行参数[字符串]列表<br>argv[0]为该脚本自身路径，其余为命令行参数<br>argv[2]</p>
+</blockquote>
+</li>
+</ol>
+
+      
+    </div>
+    <div>
+      
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-github"></i>感谢您的阅读-------------</div>
+      
+    </div>
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/466b2625/" rel="next" title="数据库基础---sql">
+                <i class="fa fa-chevron-left"></i> 数据库基础---sql
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div id="sidebar-dimmer"></div>
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="lllulu" />
+          <p class="site-author-name" itemprop="name">lllulu</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://ot0nvlvek.bkt.clouddn.com/17-7-25/94120570.jpg" target="_blank" title="WeChat Official Accounts">
+                  
+                    <i class="fa fa-fw fa-weixin"></i>
+                  
+                  WeChat Official Accounts
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lllulu</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <script type="text/javascript" src="/live2d/script.js"></script>
+    <canvas id="live2dcanvas" width="200" height="400" class="live2d"></canvas>
+    <style>
+      #live2dcanvas {
+        position: fixed;
+        right: 60px;
+        z-index: 9999;
+        pointer-events: none;
+        bottom: -60px;
+      }
+    </style>
+    <script>loadlive2d("live2dcanvas" ,"/live2d/assets/koharu/koharu.model.json")</script>
+  
+  <!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+</body>
+</html>
