@@ -313,215 +313,18 @@
 
       
         
-          
-            <p>牛客网上某些习题笔记，初学，选的题目超简单。。。。</p>
+          <p>牛客网上某些习题笔记，初学，选的题目超简单。。。。</p>
 <ol>
 <li><code>print(&#39;a&#39;&lt;&#39;b&#39;&lt;&#39;c&#39;)</code>运行结果是<code>True</code><br>解析：python支持连续比较，其本质是字符ASCII码的大小比较</li>
 <li>字符应该视为长度为1的字符串</li>
-<li>既可以用单引号，也可以用双引号创建字符串</li>
-<li>在三引号字符串中可以包含换行回车等特殊字符</li>
-<li>python中字符串不需要以\0结尾，c/c++中字符串以\0结尾</li>
-<li>python2中，普通字符串是以8为ASCII码进行存储的，而Unicode字符串则存储为16位unicode字符串，这样能够更好的表示更多的字符集，使用的语法是在字符串前面加上前缀u<br>在python3中，所有的字符串都是unicode字符串</li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import copy</div><div class="line">a = [1,2,3,4,[&apos;a&apos;,&apos;b&apos;]]</div><div class="line">b = a   # 引用，除非直接给a重新赋值，否则a变则b变，b变则a变</div><div class="line">c = copy.copy(a)    # 浅复制，只会拷贝父对象，不会拷贝父对象中子对象，所以若a的子对象变则c变，但是父对象变c不会变</div><div class="line">d = copy.deepcopy(a)    # 深拷贝，完全拷贝，完全独立于原对象，a变也不变</div><div class="line">a.append(5)</div><div class="line">a[4].append(&apos;c&apos;)</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a == [1,2,3,4,[&apos;a&apos;,&apos;b&apos;,&apos;c&apos;],5]</div><div class="line">b == [1,2,3,4,[&apos;a&apos;,&apos;b&apos;,&apos;c&apos;],5]</div><div class="line">c == [1,2,3,4,[&apos;a&apos;,&apos;b&apos;&apos;c&apos;]]</div><div class="line">d == [1,2,3,4,[&apos;a&apos;,&apos;b&apos;]]</div></pre></td></tr></table></figure></p>
-<ol>
-<li>python2支持数字和字符串之间的比较，而python3不支持<br>tuple的比较是从两者的第一个元素的ASCII码开始，直至两个元素不相等为止，若前面元素都相等，则元素个数多的tuple较大<blockquote>
-<p>(1,9)&lt;(2,3)    # True<br>(8,9)&lt;(1,2,3)  # False<br>(1,2,3)==(1,2,3)   # True<br>(3,2)&lt;(‘a’,’b’)    # python2:True python3:False</p>
-</blockquote>
-</li>
-<li>python中浮点数的运算存在误差，例：1.2-1.0=0.1999999999999996</li>
-<li><em>name</em>这个系统变量显示了当前模块执行过程中的名称，如果当前程序运行在这个模块中，则为这个模块的名称<br><em>main</em>一般作为函数的入口，类似与C语言，尤其在大型工程中，常常有if<em>name</em>==”<em>main</em>“来表明整个工程开始运行的入口<br>参考链接：<a href="https://blog.csdn.net/iamoldpan/article/details/78077983" target="_blank" rel="external">https://blog.csdn.net/iamoldpan/article/details/78077983</a></li>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">a = map(lambda x:x**3,[1,2,3])</div><div class="line">list(a)</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>结果:<br><code>[1,8,27]</code><br>map()接收两个参数，一个是功能函数f，一个list，并将f依次作用在list的每个元素上，并返回一个新的list，a**b表示a的b次方</p>
-<ol>
-<li>线程由操作系统控制，协程由程序自身控制<br>参考链接：<a href="https://www.cnblogs.com/lxmhhy/p/6041001.html" target="_blank" rel="external">https://www.cnblogs.com/lxmhhy/p/6041001.html</a></li>
-<li>当tuple(元组)只含一个元素时，需要在元素后加上逗号。因为()优先级高，被认为是执行算术运算<blockquote>
-<p>(1):不是元组的定义方式<br>(1,)：元组的定义方式</p>
-</blockquote>
-</li>
-<li><code>[i**i for i in xrange(3)]</code><br>结果：<br><code>[1,1,4]</code><br>xrange()函数用法与range完全相同，所不同的是xrange返回一个生成器，而range返回list</li>
-<li><blockquote>
-<p><em>new</em>是在实例创建之前被调用的，因为它的任务就是创建实例然后返回该实例，是个静态方法<br><em>init</em>是当实例对象创建完成后被调用的，然后设置对象属性的一些初始值<br>即<em>new</em>在<em>init</em>之前被调用，<em>new</em>的返回值（实例）将传递给<em>init</em>方法的第一个参数，然后<em>init</em>给这个实例设置一些参数<br><em>new</em>是一个静态方法，而<em>init</em>是一个实例方法<br><em>new</em>方法会返回一个创建的实例，而<em>init</em>什么都不返回<br>只有在<em>new</em>返回一个cls实例时，后面的<em>init</em>才能被调用<br>当创建一个新实例时调用<em>new</em>，初始化一个实例时用<em>init</em></p>
-</blockquote>
-</li>
-<li>python中四种命名方式</li>
-<li>object #公用方法</li>
-<li><code>_object</code> #半保护<blockquote>
-<p>被看作是”protect”，意思是只有类对象和子类对象自己能访问到这些变量，在模块或类外不可以使用，不能用’from moudle import *’导入<br>_object是为了避免与子类的方法名称冲突，对于该标识符描述的方法，父类的方法不能轻易地被子类的方法覆盖，他们的名字实际上是_classname_methodname</p>
-</blockquote>
-</li>
-<li><code>__object</code> #全私有，全保护<blockquote>
-<p>私有成员”private”，意思是只有类对象自己能访问，连子类对象也不能访问到这个数据，不能用’form module import *’导入</p>
-</blockquote>
-</li>
-<li><code>__object__</code> #内建方法，用户不要这样定义,代表特殊方法专用的标识</li>
-<li><strong>切片</strong>(元组与列表相同)</li>
-<li>切片的使用形式是元组元素后跟<code>[a:b]</code>或<code>[a:b:s]</code>，其返回值是一个新元组</li>
-<li>元组切片元素的<code>a</code>与<code>b</code>代表了<strong>元素索引</strong>，<code>s</code>代表了<strong>步长值</strong></li>
-<li>元组切片，会返回<code>索引a</code>到<code>索引b</code>之间的内容（包括索引a对应的内容而不包括索引b对应的内容）组成的新元组，其中新元组的每两个相邻元素的索引差值是步长值</li>
-<li>未提供<code>索引a</code>则默认为0,为提供<code>索引b</code>则默认为元组长度（即最后一个元素索引+1），未提供步长值s则默认为1</li>
-<li>省略元素时应注意至少有一个<code>：</code>存在才会被认为是切片;且只有一个<code>：</code>时会认为是<code>a：b</code>形式</li>
-<li>步长值为<strong>负数</strong>时意味着新元组产生方向为从右到左</li>
-<li>元组索引为负数代表元组从后数，<code>-x</code>的意思是从后数<code>x</code>个元素，例如<code>-1</code>代表了元组的最后一个元素<blockquote>
-<p>a=(1,2,3,4,5,6,7,8,9)<br>x=a[4:]# x=(5,6,7,8,9)<br>x=a[:3]# x=(1,2,3)<br>x=a[:]# x=(1,2,3,4,5,6,7,8,9)<br>x=a[2:7]# x=(3,4,5,6,7)<br>x=a[2:7:2]# x=(3,5,7)<br>x=a[-5:]# x=(5,6,7,8,9)<br>x=a[:-3]# x=(1,2,3,4,5,6)<br>x=a[::-1]# x=(9,8,7,6,5,4,3,2,1)<br>x=a[5:1]# x=() 默认的元组产生方式为从左到右，元组索引a在b之后会返回空元组<br>x=a[5:1:-1]# x=(6,5,4,3)<br>x=a[-1:-5]# x=() 新元组的产生方式只与步长值的正负有关而与索引的查询方式无关<br>参考链接：<a href="https://blog.singee.me/2017/07/30/python-note-tuple/" target="_blank" rel="external">https://blog.singee.me/2017/07/30/python-note-tuple/</a></p>
-</blockquote>
-</li>
-<li><strong>类的继承和多态</strong><br>Python有两个判断继承的函数：isinstance()用于检查<strong>实例类型</strong>;issubclass()用于检查<strong>类继承</strong><br>参考链接：<a href="https://www.cnblogs.com/feeland/p/4419121.html" target="_blank" rel="external">https://www.cnblogs.com/feeland/p/4419121.html</a></li>
-<li><strong>可变类型和不可变类型</strong><br>可变类型：<code>list，dict</code><br>不可变类型：<code>int，string，float，tuple</code><br><code>is</code> 指地址相同<br><code>==</code> 指内容相同<br>参考链接：<a href="https://www.jianshu.com/p/c5582e23b26c" target="_blank" rel="external">https://www.jianshu.com/p/c5582e23b26c</a></li>
-<li><strong>set</strong><br>要创建一个set，需要提供一个list作为输入集合<br><code>s=set([1,2,3])</code><br>重复元素在set中自动被过滤<br>参考链接：<a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143167793538255adf33371774853a0ef943280573f4d000" target="_blank" rel="external">https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/00143167793538255adf33371774853a0ef943280573f4d000</a></li>
-<li><code>python my.py v1 v2</code>命令运行脚本，通过<code>from sys import argv</code>如何获得<code>v2</code>的参数值<blockquote>
-<p>sys.argv是传递给python脚本的命令行参数[字符串]列表<br>argv[0]为该脚本自身路径，其余为命令行参数<br>argv[2]</p>
-</blockquote>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    <div>
-      
-    </div>
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/466b2625/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="lllulu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="lllulu">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/466b2625/" itemprop="url">数据库基础---sql</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-29T15:52:48+08:00">
-                2018-08-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p><strong>SQL</strong>–结构化查询语言，是与关系型数据库进行通信的标准语言<br><strong>数据库</strong>就是数据集合，他能够存储信息，用户能够以有效且高效的方式检索其中的内容<br><strong>关系型数据库</strong>由被称为表的逻辑单元组成，这些表在数据库内部彼此关联。关系型数据库可以将数据分解为较小的、可管理的逻辑单元，从而在公司这一级别上更易维护，并提供更优化的数据库性能。由于关系型数据库里的表是相互关联的，所以通过一个查询可以获取足够的数据（虽然需要的数据可能处于多个表里）。由于关系型数据库的表之间可以具有共同的关键字或片段，所以多个表里的数据可以结合在一起形成一个数据集<br><strong>SQL会话</strong></p>
-<ol>
-<li>CONNECT：建立用户和数据库的连接，可以申请连接，也可以修改连接</li>
-<li>DISCONNECT：断开用户与数据库的连接</li>
-<li>EXIT：离开数据库<br><strong>主键</strong><br>用于区分表里每一条数据行，避免了表中有重复的数据。</li>
-</ol>
-<h3 id="SQL命令"><a href="#SQL命令" class="headerlink" title="SQL命令"></a>SQL命令</h3><h4 id="SQL命令的类型"><a href="#SQL命令的类型" class="headerlink" title="SQL命令的类型"></a>SQL命令的类型</h4><ol>
-<li>数据定义语言DDL<br>用于创建和重构数据库对象，比如创建和删除表</li>
-<li>数据操作语言DML<br>用于操作关系型数据库对象的内部的数据</li>
-<li>数据查询语言DQL<br>基本命令：SELECT，用于构成对关系型数据库的查询</li>
-<li>数据控制语言DCL<br>用于控制对数据库里数据的访问</li>
-<li>数据管理命令<br>用于对数据库里的操作进行审计和分析，还有助于分析系统性能</li>
-<li>事务控制命令<br>用于管理数据库事务<br>COMMIT：保存数据库事务<br>ROLLBACK：撤销数据库事务<br>SAVEPIONT：在一组事务里创建标记点用于回退（ROLLBACK）<br>SET TRANSACTION：设置事务名称</li>
-</ol>
-<h3 id="SQL基本数据类型"><a href="#SQL基本数据类型" class="headerlink" title="SQL基本数据类型"></a>SQL基本数据类型</h3><ol>
-<li>定长字符串<br>CHARACTER(n)<br>固定长度n，若字符数量不足，用空格来填充</li>
-<li>变长字符串<br>VARCHAR(n) 或CHARACTER VARYING(n)，n表示最大长度</li>
-<li>大对象类型<br>BLOB：二进制大对象，数据是很长的二进制字符串，适合在数据库里存储二进制媒体文件，如图像和mp3<br>TEXT：长字符串类型，通常用于在数据库里保存大字符集，如博客站点的HTML输入。在数据库里保存这种类型的数据可以实现站点的动态更新</li>
-<li>小数类型<br>DECIMAL(p,s)或NUMERIC(p,s)：精确数值，精度p，小数点后位数s<br>FLOAT(p)：近似数值，尾数精度p。</li>
-<li>日期和时间<br>DATE：存储年、月、日的值<br>TIME：存储小时、分、秒的值<br>TIMESTAMP：存储年、月、日、小时、分、秒的值</li>
-<li>NULL数据类型<br>如果某个字段必须包含数据，就把它设置为NOT NULL。只要字段有可能不包含数据，最好就把它设置为NULL</li>
-<li>BOOLEAN类型<br>存储TRUE或FALSE</li>
-<li>整数类型<br>INTEGER(p)：精度p<br>SMALLINT：精度5<br>INTEFER：精度10<br>BIGINT：精度19</li>
-<li><p>自定义类型<br>CREATE TYPE：创建自定义类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">CREATE TYPE PERSON AS OBJECT</div><div class="line">(NAME      VARCHAR(19)</div><div class="line"> SSN       VARCHAR(8);</div><div class="line">)</div></pre></td></tr></table></figure>
-</li>
-<li><p>域</p>
-</li>
-</ol>
-
-          
+<li>既可以用单引号，也可以用双引号创建字符串
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/c00b24b1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -632,56 +435,18 @@
 
       
         
-          
-            <ol>
+          <p>在BBBob的带领下，开始使用vim啦^_^<br>把一些命令记录下来，方便自己查找</p>
+<ol>
 <li><code>.命令</code>可以让我们重复上次的修改</li>
 <li><code>x命令</code>会删除光标下的字符</li>
-<li><code>u命令</code>撤销上诉修改</li>
-<li><code>&gt;G命令</code>会增加从当前行到文档末尾出的缩进层级</li>
-<li><code>j命令</code>使光标下移一行，而<code>$命令</code>吧光标移到行尾</li>
-<li><code>a命令</code>在当前光标之后添加内容，<code>A命令</code>则在当前行的结尾添加内容</li>
-<li><code>s命令</code>把两个操作合并为一个：它先删除光标下的字符，然后进入插入模式</li>
-<li><code>f{char}命令</code>让Vim查找下一处指定字符出现的位置(行内查找)，如果找到了,就直接把光标移到那里</li>
-<li><code>;命令</code>会重复查找上次f命令所查找的字符</li>
-<li>对<code>.命令</code>而言，我们永远可以按<code>u键</code>撤销上次的修改</li>
-<li><code>，键</code>会反方向查找上次f{char}所查找的字符</li>
-<li>在文档中查找下一处匹配：<code>/pattern</code>，重复该操作<code>n</code>，回退<code>N</code></li>
-<li>在文档中查找上一处匹配：<code>?pattern</code>，重复该操作<code>n</code>，回退<code>N</code></li>
-<li>执行替换：<code>：s/target/replacement</code>(仅替换第一个)，重复该操作<code>$</code>，回退<code>u</code></li>
-<li>执行一系列修改：<code>qx{changes}q</code>，重复该操作<code>@x</code>，回退<code>u</code></li>
-<li><code>cw命令</code>会删除从光标位置到单词结尾间的字符，并进入插入模式</li>
-<li>替换所有地方：<code>:%s/target/replacement/g</code></li>
-<li><code>db命令</code>删除从光标起始位置到单词开头的内容</li>
-<li><code>b命令</code>把光标移到单词的开头，移动好后，就可以用一个<code>dw命令</code>删掉整个单词</li>
-<li><code>daw命令</code>可以删除光标所在处整个单词</li>
-<li><code>0命令</code>将光标移到行首</li>
-<li><code>w命令</code>移动光标到下一个单词的词首</li>
-<li><code>e命令</code>移动光标到下一个单词的词尾</li>
-<li><code>ge命令</code>移动光标到上一个单词的结尾</li>
-<li><code>q/</code>和<code>q?</code>命令，可以在vim窗口最下面打开一个新的窗口，这个窗口会列出所有的查找历史记录，可以使用vim编辑命令进行编辑，然后按回车查找</li>
-<li><strong>多行注释</strong><blockquote>
-<ol>
-<li>先按<code>ctrl+v</code>命令进入块选择模式，然后将所需要注释的行标记起来</li>
-<li>按<code>I</code>，再插入注释符</li>
-<li>按<code>esc</code>就会全部注释了</li>
-</ol>
-</blockquote>
-</li>
-<li><strong>取消多行注释</strong><blockquote>
-<ol>
-<li>先按<code>ctrl+v</code>进入块选择模式，然后选中所要删除的注释符号</li>
-<li>按<code>d</code>删除注释 </li>
-</ol>
-</blockquote>
-</li>
-<li><code>gUaw</code>命令可以将当前单词转换为大写形式</li>
-<li><code>gcap</code>将切换当前段落的注释状态</li>
-<li><code>gcG</code>会把从当前行到文件结尾间的所有内容都注释掉</li>
-<li><code>gcc</code>注释当前行</li>
-<li><code>zz命令</code>可以重绘屏幕，并把当前行显示在窗口正中</li>
-</ol>
-
-          
+<li><code>u命令</code>撤销上诉修改
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/16b5158/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1601,6 +1366,148 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/dd96dfbd/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lllulu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lllulu">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/dd96dfbd/" itemprop="url">字符型数组的输入，比较</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-27T00:00:55+08:00">
+                2017-07-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/代码/" itemprop="url" rel="index">
+                    <span itemprop="name">代码</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="含空格的字符串输入问题"><a href="#含空格的字符串输入问题" class="headerlink" title="含空格的字符串输入问题"></a>含空格的字符串输入问题</h1><p>emmmm</p>
+<ol>
+<li><p>gets（）<br>C里面的函数，要加头文件      <code>#include &lt;cstdio&gt;</code><br>以回车读取结束</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/dd96dfbd/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    <div>
+      
+    </div>
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1651,7 +1558,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1673,7 +1580,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
